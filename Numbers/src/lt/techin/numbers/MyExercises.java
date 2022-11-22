@@ -38,30 +38,30 @@ public class MyExercises implements Exercises {
     }
 
     @Override
-    public int computeSumOfNumbers(int i) {
+    public int computeSumOfNumbers(int number) {
         int sum = 0;
-        for (int j = 1; j <= i; j++) {
-            sum += j;
+        for (int i = 1; i <= number; i++) {
+            sum += i;
         }
         return sum;
     }
 
     @Override
-    public int computeSumOfNumbers(int i, NumberFilter numberFilter) {
+    public int computeSumOfNumbers(int number, NumberFilter numberFilter) {
         int sum = 0;
-        for (int j = 1; j <= i; j++) {
-            if (numberFilter.accept(j)) {
-                sum += j;
+        for (int i = 1; i <= number; i++) {
+            if (numberFilter.accept(i)) {
+                sum += i;
             }
         }
         return sum;
     }
 
     @Override
-    public List<Integer> computeNumbersUpTo(int i) {
+    public List<Integer> computeNumbersUpTo(int number) {
         List<Integer> numbers = new ArrayList<>();
-        for (int j = 1; j < i; j++) {
-            numbers.add(j);
+        for (int i = 1; i < number; i++) {
+            numbers.add(i);
         }
         return numbers;
     }
@@ -69,16 +69,15 @@ public class MyExercises implements Exercises {
     @Override
     public Map<Integer, Integer> countOccurrences(List<Integer> list) {
         Map<Integer, Integer> countedOccurrences = new TreeMap<>();
-        for (int i = 0; i < list.size(); i++) {
-            int key = list.get(i);
+        for (int key : list) {
             countedOccurrences.put(key, countedOccurrences.getOrDefault(key, 0) + 1);
         }
         return countedOccurrences;
     }
 
     @Override
-    public IntegerGenerator createIntegerGenerator(int i, int i1) {
-        return new MyIntegerGenerator(i, i1);
+    public IntegerGenerator createIntegerGenerator(int numberFrom, int numberTo) {
+        return new MyIntegerGenerator(numberFrom, numberTo);
     }
 
     @Override

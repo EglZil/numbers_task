@@ -1,25 +1,25 @@
 package lt.techin.numbers;
 
+import java.util.Iterator;
+import java.util.stream.IntStream;
+
 import lt.itakademija.exam.IntegerGenerator;
 
 public class MyIntegerGenerator implements IntegerGenerator {
-    private int numberFrom;
-    private int numberTo;
-    private int numberToReturn;
+
+    private Iterator<Integer> iterator;
 
     public MyIntegerGenerator(int from, int to) {
-        numberFrom = from;
-        numberTo = to;
-        numberToReturn = from;
+        iterator = IntStream.range(from, to + 1).iterator();
     }
 
     @Override
     public Integer getNext() {
-        if (numberToReturn >= numberFrom && numberToReturn <= numberTo) {
-            int returned = numberToReturn;
-            numberToReturn++;
-            return returned;
+        while (iterator.hasNext()) {
+            return iterator.next();
         }
         return null;
     }
+
 }
+
